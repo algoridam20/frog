@@ -1,5 +1,7 @@
 {
-  "appTitle": "Frog 🐸",
   "pageNotFound": "are you a lost 🐸!",
-  "workInProgress": "Comming soon..... 😅"
+  "workInProgress": "Comming soon..... 😅",
+  "titleApp": "Frog 🐸",
+  "titleGraphVisualizer": "Graph visualizer",
+  "titleKnowledgeGraph": "Knowledge Graph"
 }
