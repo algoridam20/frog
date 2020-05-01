@@ -1,17 +1,27 @@
-import React from "react";
-import dictionary from '../../../dictionary.json';
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
+// REF: switch js https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
 
-export const Header = props => {
+import React from "react";
+import dictionary from "../../../dictionary.json";
+import { CardContainer } from "../card";
+import { Wrapper } from "./styles";
+
+export const Header = () => {
+  const pathName = window.location.pathname;
+  let title = "";
+
+  if (pathName.includes("/graph-visualizer")) {
+    title = dictionary.titleGraphVisualizer;
+  } else if (pathName.includes("/knowledge-graph")) {
+    title = dictionary.titleKnowledgeGraph;
+  } else {
+    title = dictionary.titleApp;
+  }
+
+  console.log(title, "..........");
+
   return (
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6">{dictionary.appTitle}</Typography>
-      </Toolbar>
-    </AppBar>
+    <Wrapper>
+      <CardContainer title={title}></CardContainer>
+    </Wrapper>
   );
 };

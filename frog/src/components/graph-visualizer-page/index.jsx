@@ -1,7 +1,21 @@
 import React from "react";
 import dictionary from "../../dictionary.json";
-import { Typography } from "@material-ui/core";
+import { ToolBarWrapper, ContentWrapper, Wrapper } from "./styles";
+import { CardContainer } from "../common/card";
 
 export const GraphVisualizer = () => {
-  return <Typography variant="h5">Jain we will work in this page first! |{dictionary.workInProgress}</Typography>;
+  return (
+    <Wrapper>
+      <ToolBarWrapper>
+        <CardContainer title={"Toolbar"}>
+          {dictionary.workInProgress}
+        </CardContainer>
+      </ToolBarWrapper>
+      <ContentWrapper>
+        <CardContainer title={"Graph"}>
+          {dictionary.workInProgress}
+        </CardContainer>
+      </ContentWrapper>
+    </Wrapper>
+  );
 };
