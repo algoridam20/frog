@@ -1,19 +1,21 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
+import "./assets/Roboto/Roboto-Regular.ttf";
 import { Header } from "./components/common/header";
 import { PageNotFound } from "./components/404-page";
 import { KnowledgeGraph } from "./components/knowledge-graph-page";
 import { GraphVisualizer } from "./components/graph-visualizer-page";
-import { SideNav } from "./components/common/side-nav";
 import { HomePage } from "./components/home-page";
+import { lightTheme } from "./theme";
+import { ThemeProvider } from "styled-components";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <SideNav />
+      <ThemeProvider theme={lightTheme}>
+        <Header key={window.location.pathname} />
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/graph-visualizer" component={GraphVisualizer} exact />
@@ -24,7 +26,7 @@ function App() {
           />
           <Route component={PageNotFound} />
         </Switch>
-      </div>
+      </ThemeProvider>
     </Router>
   );
 }
