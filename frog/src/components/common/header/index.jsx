@@ -16,9 +16,6 @@ export const Header = () => {
   } else {
     title = dictionary.titleApp;
   }
-
-  console.log(title, "..........");
-
   return (
     <Wrapper>
       <CardContainer title={title}></CardContainer>

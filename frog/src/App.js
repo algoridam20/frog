@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import "./assets/Roboto/Roboto-Regular.ttf";
-import { Header } from "./components/common/header";
 import { PageNotFound } from "./components/404-page";
 import { KnowledgeGraph } from "./components/knowledge-graph-page";
 import { GraphVisualizer } from "./components/graph-visualizer-page";
@@ -15,7 +14,6 @@ function App() {
   return (
     <Router>
       <ThemeProvider theme={lightTheme}>
-        <Header key={window.location.pathname} />
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/graph-visualizer" component={GraphVisualizer} exact />
