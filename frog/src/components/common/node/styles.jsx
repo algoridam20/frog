@@ -7,6 +7,7 @@ const getSize = (size) => {
 };
 
 export const Circle = styled.div`
+  z-index: 10;
   border-radius: 50%;
   display: inline-block;
   text-align: center;
