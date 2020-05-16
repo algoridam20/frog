@@ -26,7 +26,6 @@ export const GridContainerWrapper = styled.div`
       .toString()
       .split(",")
       .join(" ")}};
-  gap: 4px;
   align-items: center;
   justify-items: center;
 `;

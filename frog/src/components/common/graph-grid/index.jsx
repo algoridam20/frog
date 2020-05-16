@@ -8,21 +8,21 @@ import {
   Wrapper,
 } from "./styles";
 import { Node } from "../node";
-import { EdgeByIds } from "../edge";
+import { EdgeByIds, EdgeByGridCoordinates } from "../edge";
 
 export class GraphGrid extends React.Component {
   constructor(props) {
     super(props);
   }
   componentDidMount() {
-    EdgeByIds({ fromId: "Node-A", toId: "Node-B", color: "red" });
-    EdgeByIds({ fromId: "Node-A", toId: "Node-E", color: "blue" });
-    EdgeByIds({ fromId: "Node-E", toId: "Node-B", color: "blue" });
-    EdgeByIds({ fromId: "Node-C", toId: "Node-B", color: "cyan" });
-    EdgeByIds({ fromId: "Node-Z", toId: "Node-B", color: "red" });
-    EdgeByIds({ fromId: "Node-A", toId: "Node-Z", color: "green" });
-    EdgeByIds({ fromId: "Node-Z", toId: "Node-D", color: "blue" });
-    EdgeByIds({ fromId: "Node-D", toId: "Node-C", color: "orange" });
+    // EdgeByIds({ fromId: "Node-A", toId: "Node-B", color: "red" });
+    // EdgeByIds({ fromId: "Node-A", toId: "Node-E", color: "blue" });
+    // EdgeByIds({ fromId: "Node-E", toId: "Node-B", color: "blue" });
+    // EdgeByIds({ fromId: "Node-C", toId: "Node-B", color: "cyan" });
+    // EdgeByIds({ fromId: "Node-Z", toId: "Node-B", color: "red" });
+    // EdgeByIds({ fromId: "Node-A", toId: "Node-Z", color: "green" });
+    // EdgeByIds({ fromId: "Node-D", toId: "Node-C", color: "orange" });
+    // EdgeByIds({ fromId: "Node-Z", toId: "Node-D", color: "blue" });
   }
   render() {
     const { row, col, editMode = false, elementSize = "90px" } = this.props;
@@ -48,7 +48,37 @@ export class GraphGrid extends React.Component {
             <GridChildWrapper colIndex={1 % col} rowIndex={2 % row}>
               <Node name={"Z"} size={5} color={"green"} />
             </GridChildWrapper>
-            {/* <EdgeByIds fromId={"Node-A"} toId={"Node-B"} /> */}
+            <GridChildWrapper colIndex={7 % col} rowIndex={1 % row}>
+              <Node name={"R"} size={0} color={"red"} />
+            </GridChildWrapper>
+            <EdgeByGridCoordinates
+              gridElementSize={elementSize}
+              fromRow={4}
+              fromCol={2}
+              toRow={3}
+              toCol={4}
+            />
+            <EdgeByGridCoordinates
+              gridElementSize={elementSize}
+              fromRow={2}
+              fromCol={1}
+              toRow={3}
+              toCol={4}
+            />
+            <EdgeByGridCoordinates
+              gridElementSize={elementSize}
+              fromRow={3}
+              fromCol={4}
+              toRow={2}
+              toCol={1}
+            />
+            <EdgeByGridCoordinates
+              gridElementSize={elementSize}
+              fromRow={4}
+              fromCol={2}
+              toRow={3}
+              toCol={4}
+            />
           </GridContainerWrapper>
         </GridWrapper>
       </Wrapper>
