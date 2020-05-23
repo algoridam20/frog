@@ -19,12 +19,14 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
+          styleOption: -1,
         },
         {
           toId: "62",
           weight: "0",
           isVisited: false,
           isVisiting: false,
+          styleOption: -1,
         },
       ],
     },
@@ -79,6 +81,7 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
+          styleOption: -1,
         },
         {
           toId: "21",
@@ -103,6 +106,7 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
+          styleOption: -1,
         },
         {
           toId: "62",
@@ -128,19 +132,25 @@ export const graph1 = {
           isVisited: false,
           isVisiting: false,
         },
-
         {
           toId: "29",
           weight: "0",
           isVisited: false,
           isVisiting: false,
         },
+        {
+          toId: "62",
+          weight: "0",
+          isVisited: false,
+          isVisiting: false,
+          styleOption: -1,
+        },
       ],
     },
   ],
 };
 
-export const graph2 = {
+export const graph3 = {
   properties: {
     isDirected: false,
     isWeighted: false,
@@ -296,6 +306,72 @@ export const graph2 = {
         isVisiting: false,
       },
       edges: [],
+    },
+  ],
+};
+
+export const graph2 = {
+  properties: {
+    isDirected: true,
+    isWeighted: true,
+  },
+  adjacencyList: [
+    {
+      node: {
+        name: "C",
+        id: 62,
+        size: 1,
+        color: "red",
+        isVisited: 0,
+        isVisiting: false,
+      },
+      edges: [
+        {
+          toId: "71",
+          weight: "0",
+          isVisited: false,
+          isVisiting: false,
+          styleOption: 1,
+        },
+      ],
+    },
+    {
+      node: {
+        name: "D",
+        id: 71,
+        size: 1,
+        color: "red",
+        isVisited: 0,
+        isVisiting: false,
+      },
+      edges: [
+        {
+          toId: "71",
+          weight: "0",
+          isVisited: false,
+          isVisiting: false,
+          styleOption: 0,
+        },
+      ],
+    },
+    {
+      node: {
+        name: "X",
+        id: 80,
+        size: 1,
+        color: "red",
+        isVisited: 0,
+        isVisiting: false,
+      },
+      edges: [
+        {
+          toId: "62",
+          weight: 12,
+          isVisited: false,
+          isVisiting: false,
+          styleOption: -1,
+        },
+      ],
     },
   ],
 };
