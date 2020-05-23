@@ -14,6 +14,8 @@ export const Circle = styled.div`
   height: ${(props) => getSize(props.size)};
   width: ${(props) => getSize(props.size)};
   border: 3px solid ${(props) => props.color};
+  background-color: white;
+  z-index: 99;
   color: ${(props) => props.color};
 `;
 
@@ -21,5 +23,6 @@ export const NameWrapper = styled.div`
   text-align: center;
   vertical-align: middle;
   font-weight: 700;
+  z-index: 100;
   line-height: ${(props) => getSize(props.size)};
 `;

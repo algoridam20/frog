@@ -9,6 +9,7 @@ import { HomePage } from "./components/home-page";
 import { lightTheme } from "./theme";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
+import { DoNext } from "./components/do-next";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             component={KnowledgeGraph}
             exact
           />
+          <Route path="/do-next/:taskId?" component={DoNext} exact />
           <Route component={PageNotFound} />
         </Switch>
       </ThemeProvider>

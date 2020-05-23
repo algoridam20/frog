@@ -14,6 +14,7 @@ export const HomePage = () => {
         <Typography variant="h5">{dictionary.workInProgress}</Typography>{" "}
         <Link to={"/graph-visualizer"}>{"until then navigate here"}</Link>{" "}
         <Link to={"/knowledge-graph/graph1"}>{"or here"}</Link>
+        <Link to={"/do-next"}>{"or here"}</Link>
       </Wrapper>
     </React.Fragment>
   );
