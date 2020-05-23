@@ -17,6 +17,7 @@ export const Circle = styled.div`
   background-color: white;
   z-index: 99;
   color: ${(props) => props.color};
+  box-shadow: 0px 2px 3px rgb(202, 202, 202, 0.5);
 `;
 
 export const NameWrapper = styled.div`

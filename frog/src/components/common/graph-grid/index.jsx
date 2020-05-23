@@ -31,7 +31,7 @@ export const GraphGrid = ({
             const { id, name, size, color } = val.node;
             const { row, col } = getRowColById(id, totalRow, totalCol);
             const Edges = val.edges.map((edge) => {
-              const { toId, weight } = edge;
+              const { toId, weight, styleOption } = edge;
               const toRow = getRowById(toId, totalRow, totalCol).row;
               const toCol = getColById(toId, totalRow, totalCol).col;
               return (
@@ -43,6 +43,7 @@ export const GraphGrid = ({
                   fromCol={col}
                   toRow={toRow}
                   toCol={toCol}
+                  styleOption={styleOption}
                 />
               );
             });
