@@ -1,6 +1,5 @@
 import React from "react";
-import { getPositionById } from "../../../utils/find-position-by-id";
-import { Wrapper } from "./styles";
+import { Wrapper, EdgeWrapper, TextWrapper } from "./styles";
 
 export const EdgeByGridCoordinates = ({
   gridElementSize,
@@ -8,24 +7,31 @@ export const EdgeByGridCoordinates = ({
   fromCol,
   toRow,
   toCol,
-  color,
+  color = "red",
   isDirected = false,
-  weight = 0,
+  weight,
 }) => {
   const delX = fromCol - toCol;
   const delY = fromRow - toRow;
-  // ye logic sahi kar de 👀
-  const angleCorrection =
-    (fromRow < toRow && fromCol > toCol) ||
-    (fromRow === toRow && fromCol > toCol)
-      ? 180
-      : 0;
+  const angleCorrection = fromCol > toCol || fromCol === toCol ? 180 : 0;
   console.log(angleCorrection);
   const degrees = Math.atan(delY / delX) * (180 / Math.PI) + angleCorrection;
   const length =
     Math.sqrt(delX * delX + delY * delY) * gridElementSize.replace("px", "");
 
   return (
-    <Wrapper row={fromRow} col={fromCol} degrees={degrees} length={length} />
+    <Wrapper row={fromRow} col={fromCol}>
+      <EdgeWrapper
+        row={fromRow}
+        col={fromCol}
+        degrees={degrees}
+        length={length}
+        color={color}
+      >
+        <TextWrapper color={color}>{`${weight ? weight : ""} ${
+          isDirected ? ">" : ""
+        }`}</TextWrapper>
+      </EdgeWrapper>
+    </Wrapper>
   );
 };

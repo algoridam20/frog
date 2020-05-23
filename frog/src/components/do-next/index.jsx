@@ -3,10 +3,8 @@ import dictionary from "../../dictionary.json";
 import { ToolBarWrapper, ContentWrapper, Wrapper } from "./styles";
 import { CardContainer } from "../common/card";
 import { Header } from "../common/header";
-import { GraphGrid } from "../common/graph-grid";
-import { graph1 } from "../../state/sample-graphs";
 
-export const GraphVisualizer = () => {
+export const DoNext = () => {
   return (
     <React.Fragment>
       <Header />
@@ -17,9 +15,7 @@ export const GraphVisualizer = () => {
           </CardContainer>
         </ToolBarWrapper>
         <ContentWrapper>
-          <CardContainer title={"Graph"}>
-            <GraphGrid totalRow={8} totalCol={13} graph={graph1} />
-          </CardContainer>
+          <CardContainer title={"Do Next"}></CardContainer>
         </ContentWrapper>
       </Wrapper>
     </React.Fragment>

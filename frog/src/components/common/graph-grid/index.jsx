@@ -8,116 +8,55 @@ import {
   Wrapper,
 } from "./styles";
 import { Node } from "../node";
-import { EdgeByIds, EdgeByGridCoordinates } from "../edge";
+import { EdgeByGridCoordinates } from "../edge";
+import { getRowColById, getRowById, getColById } from "../../../utils/common";
 
-export class GraphGrid extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  componentDidMount() {
-    // EdgeByIds({ fromId: "Node-A", toId: "Node-B", color: "red" });
-    // EdgeByIds({ fromId: "Node-A", toId: "Node-E", color: "blue" });
-    // EdgeByIds({ fromId: "Node-E", toId: "Node-B", color: "blue" });
-    // EdgeByIds({ fromId: "Node-C", toId: "Node-B", color: "cyan" });
-    // EdgeByIds({ fromId: "Node-Z", toId: "Node-B", color: "red" });
-    // EdgeByIds({ fromId: "Node-A", toId: "Node-Z", color: "green" });
-    // EdgeByIds({ fromId: "Node-D", toId: "Node-C", color: "orange" });
-    // EdgeByIds({ fromId: "Node-Z", toId: "Node-D", color: "blue" });
-  }
-  render() {
-    const { row, col, editMode = false, elementSize = "90px" } = this.props;
-    return (
-      <Wrapper>
-        <GridWrapper>
-          <GridContainerWrapper row={row} col={col} elementSize={elementSize}>
-            <GridChildWrapper colIndex={4 % col} rowIndex={3 % row}>
-              <Node name={"A"} size={0} color={"red"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={2 % col} rowIndex={6 % row}>
-              <Node name={"B"} size={1} color={"blue"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={9 % col} rowIndex={6 % row}>
-              <Node name={"E"} size={2} color={"orange"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={4 % col} rowIndex={2 % row}>
-              <Node name={"C"} size={3} color={"red"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={2 % col} rowIndex={4 % row}>
-              <Node name={"D"} size={4} color={"cyan"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={1 % col} rowIndex={2 % row}>
-              <Node name={"Z"} size={5} color={"green"} />
-            </GridChildWrapper>
-            <GridChildWrapper colIndex={7 % col} rowIndex={1 % row}>
-              <Node name={"R"} size={0} color={"red"} />
-            </GridChildWrapper>
-            <EdgeByGridCoordinates
-              gridElementSize={elementSize}
-              fromRow={4}
-              fromCol={2}
-              toRow={3}
-              toCol={4}
-            />
-            <EdgeByGridCoordinates
-              gridElementSize={elementSize}
-              fromRow={2}
-              fromCol={1}
-              toRow={3}
-              toCol={4}
-            />
-            <EdgeByGridCoordinates
-              gridElementSize={elementSize}
-              fromRow={3}
-              fromCol={4}
-              toRow={2}
-              toCol={1}
-            />
-            <EdgeByGridCoordinates
-              gridElementSize={elementSize}
-              fromRow={4}
-              fromCol={2}
-              toRow={3}
-              toCol={4}
-            />
-          </GridContainerWrapper>
-        </GridWrapper>
-      </Wrapper>
-    );
-  }
-}
-// export const GraphGrid = ({
-//   row,
-//   col,
-//   editMode = false,
-//   elementSize = "90px",
-// }) => {
-//   return (
-//     <Wrapper>
-//       <GridWrapper>
-//         {/* <CardContainer> */}
-//         <GridContainerWrapper row={row} col={col} elementSize={elementSize}>
-//           <GridChildWrapper colIndex={4 % col} rowIndex={3 % row}>
-//             <Node name={"A"} size={0} color={"red"} />
-//           </GridChildWrapper>
-//           <GridChildWrapper colIndex={2 % col} rowIndex={6 % row}>
-//             <Node name={"B"} size={1} color={"red"} />
-//           </GridChildWrapper>
-//           <GridChildWrapper colIndex={9 % col} rowIndex={6 % row}>
-//             <Node name={"109"} size={2} color={"red"} />
-//           </GridChildWrapper>
-//           <GridChildWrapper colIndex={4 % col} rowIndex={2 % row}>
-//             <Node name={"A"} size={3} color={"red"} />
-//           </GridChildWrapper>
-//           <GridChildWrapper colIndex={2 % col} rowIndex={4 % row}>
-//             <Node name={"B"} size={4} color={"red"} />
-//           </GridChildWrapper>
-//           <GridChildWrapper colIndex={1 % col} rowIndex={2 % row}>
-//             <Node name={"109"} size={5} color={"red"} />
-//           </GridChildWrapper>
-//           <EdgeByIds fromId={"Node-A"} toId={"Node-B"} />
-//         </GridContainerWrapper>
-//         {/* </CardContainer> */}
-//       </GridWrapper>
-//     </Wrapper>
-//   );
-// };
+export const GraphGrid = ({
+  totalRow,
+  totalCol,
+  editMode = false,
+  elementSize = "90px",
+  graph,
+}) => {
+  const { isDirected, isWeighted } = graph.properties;
+  return (
+    <Wrapper>
+      <GridWrapper>
+        <GridContainerWrapper
+          row={totalRow}
+          col={totalCol}
+          elementSize={elementSize}
+        >
+          {graph.adjacencyList.map((val) => {
+            const { id, name, size, color } = val.node;
+            const { row, col } = getRowColById(id, totalRow, totalCol);
+            const Edges = val.edges.map((edge) => {
+              const { toId, weight } = edge;
+              const toRow = getRowById(toId, totalRow, totalCol).row;
+              const toCol = getColById(toId, totalRow, totalCol).col;
+              return (
+                <EdgeByGridCoordinates
+                  gridElementSize={elementSize}
+                  isDirected={isDirected}
+                  weight={isWeighted ? weight : undefined}
+                  fromRow={row}
+                  fromCol={col}
+                  toRow={toRow}
+                  toCol={toCol}
+                />
+              );
+            });
+            return (
+              <React.Fragment>
+                <GridChildWrapper colIndex={col} rowIndex={row} key={id}>
+                  <Node name={name} size={size} color={color} />
+                </GridChildWrapper>
+                {Edges}
+              </React.Fragment>
+            );
+          })}
+        </GridContainerWrapper>
+      </GridWrapper>
+    </Wrapper>
+  );
+};
