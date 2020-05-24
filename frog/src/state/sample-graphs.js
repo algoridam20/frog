@@ -51,13 +51,7 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
-        },
-        {
-          toId: "62",
-          weight: "0",
-          isVisited: false,
-          isVisiting: false,
-        },
+        }
       ],
     },
     {
@@ -113,6 +107,7 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
+          styleOption: -1,
         },
       ],
     },
@@ -150,7 +145,7 @@ export const graph1 = {
   ],
 };
 
-export const graph3 = {
+export const graph2 = {
   properties: {
     isDirected: false,
     isWeighted: false,
@@ -310,7 +305,7 @@ export const graph3 = {
   ],
 };
 
-export const graph2 = {
+export const graph3 = {
   properties: {
     isDirected: true,
     isWeighted: true,
