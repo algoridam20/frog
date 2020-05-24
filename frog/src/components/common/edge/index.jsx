@@ -7,6 +7,7 @@ import {
   EdgeWrapperChild1,
   TextWrapper1,
   Loading,
+  LoadingWrapper,
   EdgeWrapper2,
   EdgeWrapperChild2,
   TextWrapper2,
@@ -33,10 +34,12 @@ export const EdgeByGridCoordinates = ({
     return (
       <Wrapper row={fromRow} col={fromCol}>
         <EdgeWrapper1 length={length} degrees={degrees} color={color}>
-          {/* <Loading /> */}
+          <LoadingWrapper>
+            <Loading />
+          </LoadingWrapper>
           <EdgeWrapperChild1 color={color} />
           <TextWrapper1 color={color}>{`${weight ? weight : ""} ${
-            isDirected ? ">>" : ""
+            isDirected ? ">" : ""
           }`}</TextWrapper1>
         </EdgeWrapper1>
       </Wrapper>
@@ -52,15 +55,6 @@ export const EdgeByGridCoordinates = ({
             }`}</TextWrapper>
           </EdgeWrapper>
         </Wrapper>
-
-        {/* <Wrapper row={fromRow} col={fromCol}>
-          <EdgeWrapper2 length={length} degrees={degrees} color={color}>
-            <EdgeWrapperChild2 color={color} />
-            <TextWrapper2 color={color}>{`${weight ? weight : ""} ${
-              isDirected ? ">>" : ""
-            }`}</TextWrapper2>
-          </EdgeWrapper2>
-        </Wrapper> */}
       </React.Fragment>
     );
   }

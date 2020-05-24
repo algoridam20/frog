@@ -11,14 +11,19 @@ const fill = keyframes`
   }
 }`;
 
+export const LoadingWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+`;
+
 export const Loading = styled.div`
-         // vertical-align: middle;
-         position: relative;
-         z-index: -1;
-         animation: ${fill} 2s linear 1;
-         height: 100%;
-         background-color: #8b92ef;
-       `;
+  animation: ${fill} 2s linear 1;
+  height: 100%;
+  // background-color: #8b92ef;
+  background-color: red;
+`;
 
 export const Wrapper = styled.div`
   grid-column: ${(props) => props.col};
@@ -27,7 +32,6 @@ export const Wrapper = styled.div`
 
 export const EdgeWrapper = styled.div`
   z-index: -1;
-  align-content: center;
   content: "";
   position: absolute;
   height: 6px;
@@ -39,14 +43,14 @@ export const EdgeWrapper = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  z-index: 0;
-  vertical-align: middle;
+  position: absolute;
   font-weight: 700;
-  z-index: 99;
+  margin-left: 65%;
+  margin-top: -5px;
   margin-right: 27%;
-  line-height: 6px;
-  text-align: right;
-  font-size: 16px;
+  line-height: 2px;
+  font-size: 15px;
+   color: white;
 `;
 
 export const EdgeWrapper1 = styled.div`
@@ -67,13 +71,13 @@ export const EdgeWrapper1 = styled.div`
 `;
 
 export const EdgeWrapperChild1 = styled.div`
-  z-index: -10;
+  z-index: 2;
+  position: absolute;
   margin-top: -1px;
   margin-bottom: 7px;
   margin-left: 5px;
   margin-right: 5px;
   content: "";
-  position: absolute;
   height: 32px;
   border-radius: 7px;
   border-left: 3px solid ${(props) => props.color};
@@ -86,60 +90,18 @@ export const EdgeWrapperChild1 = styled.div`
 `;
 
 export const TextWrapper1 = styled.div`
-  z-index: 0;
-  vertical-align: middle;
+  position: absolute;
   font-weight: 700;
   z-index: 100;
-  margin-right: 27%;
-  line-height: 75px;
+  margin-left: 65%;
+  line-height: 73px;
   text-align: right;
-  font-size: 16px;
+  font-size: 15px;
+  color: white;
 `;
 
-export const EdgeWrapper2 = styled.div`
-  z-index: -1;
-  align-content: center;
-  text-align: bottom;
-  content: "";
-  position: absolute;
-  height: 40px;
-  border-left: 3px solid ${(props) => props.color};
-  border-right: 3px solid ${(props) => props.color};
-  border-bottom: 3px solid ${(props) => props.color};
-  border-radius: 10px;
-  width: ${(props) => props.length + 5}px;
-  transform: rotate(${(props) => props.degrees}deg);
-  transform-origin: left;
+export const EdgeWrapper2 = styled.div``;
 
-  background: white;
-`;
+export const EdgeWrapperChild2 = styled.div``;
 
-export const EdgeWrapperChild2 = styled.div`
-  z-index: -1;
-  margin-top: -1px;
-  margin-bottom: 7px;
-  margin-left: 5px;
-  margin-right: 5px;
-  content: "";
-  position: absolute;
-  height: 32px;
-  border-radius: 7px;
-  border-left: 3px solid ${(props) => props.color};
-  border-right: 3px solid ${(props) => props.color};
-  border-bottom: 3px solid ${(props) => props.color};
-  width: calc(100% - 15px);
-  transform: rotate(${(props) => props.degrees}deg);
-  transform-origin: left;
-  background: white;
-`;
-
-export const TextWrapper2 = styled.div`
-  z-index: 0;
-  vertical-align: middle;
-  font-weight: 700;
-  z-index: 100;
-  margin-right: 27%;
-  line-height: 75px;
-  text-align: right;
-  font-size: 16px;
-`;
+export const TextWrapper2 = styled.div``;
