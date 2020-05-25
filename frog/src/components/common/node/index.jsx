@@ -2,7 +2,7 @@
 import React from "react";
 import { Circle, NameWrapper } from "./styles";
 
-export const Node = ({ name, size, color }) => {
+export const Node = ({ name, size, color, isVisiting }) => {
   return (
     <Circle size={size} color={color} id={`Node-${name}`}>
       <NameWrapper size={size}>{name}</NameWrapper>

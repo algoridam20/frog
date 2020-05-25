@@ -2,6 +2,7 @@ export const graph1 = {
   properties: {
     isDirected: true,
     isWeighted: true,
+    title: "weighted directed graph 1",
   },
   adjacencyList: [
     {
@@ -51,7 +52,7 @@ export const graph1 = {
           weight: "0",
           isVisited: false,
           isVisiting: false,
-        }
+        },
       ],
     },
     {
