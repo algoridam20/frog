@@ -3,6 +3,8 @@ export const graph1 = {
     isDirected: true,
     isWeighted: true,
     title: "weighted directed graph 1",
+    isVisited: false,
+    isVisiting: false,
   },
   adjacencyList: [
     {
@@ -148,8 +150,11 @@ export const graph1 = {
 
 export const graph2 = {
   properties: {
+    title: "tree 1",
     isDirected: false,
     isWeighted: false,
+    isVisited: false,
+    isVisiting: false,
   },
   adjacencyList: [
     {
@@ -310,6 +315,9 @@ export const graph3 = {
   properties: {
     isDirected: true,
     isWeighted: true,
+    title: "very simple graph",
+    isVisited: false,
+    isVisiting: false,
   },
   adjacencyList: [
     {

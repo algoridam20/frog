@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { runDFSReducer } from "./graph-visualizer-reducer";
+import { runGraphAlgoReducer } from "./reducers/graph-visualizer-reducer";
 
 export default combineReducers({
-  locale: runDFSReducer,
+  algorithm: runGraphAlgoReducer,
 });
