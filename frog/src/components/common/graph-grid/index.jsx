@@ -28,10 +28,10 @@ export const GraphGrid = ({
           elementSize={elementSize}
         >
           {graph.adjacencyList.map((val) => {
-            const { id, name, size, color } = val.node;
+            const { id, name, size, color, isVisiting } = val.node;
             const { row, col } = getRowColById(id, totalRow, totalCol);
             const Edges = val.edges.map((edge) => {
-              const { toId, weight, styleOption } = edge;
+              const { toId, weight, styleOption, isVisiting } = edge;
               const toRow = getRowById(toId, totalRow, totalCol).row;
               const toCol = getColById(toId, totalRow, totalCol).col;
               return (
@@ -44,13 +44,19 @@ export const GraphGrid = ({
                   toRow={toRow}
                   toCol={toCol}
                   styleOption={styleOption}
+                  isVisiting={isVisiting}
                 />
               );
             });
             return (
               <React.Fragment>
                 <GridChildWrapper colIndex={col} rowIndex={row} key={id}>
-                  <Node name={name} size={size} color={color} />
+                  <Node
+                    name={name}
+                    size={size}
+                    color={color}
+                    isVisiting={isVisiting}
+                  />
                 </GridChildWrapper>
                 {Edges}
               </React.Fragment>
