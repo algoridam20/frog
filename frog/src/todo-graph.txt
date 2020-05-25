@@ -1,0 +1,5 @@
+1. add query param in url for saving graph
+2. add node animation when visiting
+3. add redux
+4. add toolbar edit mode
+5. add bfs and dfs algorithms

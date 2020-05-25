@@ -19,10 +19,12 @@ export const EdgeByGridCoordinates = ({
   fromCol,
   toRow,
   toCol,
+  isVisiting,
   color = "red",
   isDirected = false,
   weight,
   styleOption = 0,
+
 }) => {
   const delX = fromCol - toCol;
   const delY = fromRow - toRow;
@@ -34,9 +36,9 @@ export const EdgeByGridCoordinates = ({
     return (
       <Wrapper row={fromRow} col={fromCol}>
         <EdgeWrapper1 length={length} degrees={degrees} color={color}>
-          <LoadingWrapper>
+          {!isVisiting && <LoadingWrapper>
             <Loading />
-          </LoadingWrapper>
+          </LoadingWrapper>}
           <EdgeWrapperChild1 color={color} />
           <TextWrapper1 color={color}>{`${weight ? weight : ""} ${
             isDirected ? ">" : ""
@@ -49,7 +51,11 @@ export const EdgeByGridCoordinates = ({
       <React.Fragment>
         <Wrapper row={fromRow} col={fromCol}>
           <EdgeWrapper degrees={degrees} length={length} color={color}>
-            <Loading />
+            {!isVisiting && (
+              <LoadingWrapper>
+                <Loading />
+              </LoadingWrapper>
+            )}
             <TextWrapper color={color}>{`${weight ? weight : ""} ${
               isDirected ? ">" : ""
             }`}</TextWrapper>

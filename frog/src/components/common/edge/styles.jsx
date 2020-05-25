@@ -21,7 +21,6 @@ export const LoadingWrapper = styled.div`
 export const Loading = styled.div`
   animation: ${fill} 2s linear 1;
   height: 100%;
-  // background-color: #8b92ef;
   background-color: red;
 `;
 
@@ -46,10 +45,11 @@ export const TextWrapper = styled.div`
   position: absolute;
   font-weight: 700;
   margin-left: 65%;
-  margin-top: -5px;
+  margin-top: 1px;
   margin-right: 27%;
   line-height: 2px;
   font-size: 15px;
+  z-index: 3;
    color: white;
 `;
 
