@@ -1,10 +1,6 @@
 import { all, fork } from "redux-saga/effects";
-// import {
-//   watchABC,
-// } from "./sagas";
+import { watchRunAlgoReq } from "./sagas/graph-algo-sagas";
 
 export default function* rootSaga() {
-  yield all([
-    // fork(),
-  ]);
+  yield all([fork(watchRunAlgoReq)]);
 }

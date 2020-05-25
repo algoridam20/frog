@@ -8,9 +8,9 @@ import {
   TextWrapper1,
   Loading,
   LoadingWrapper,
-  EdgeWrapper2,
-  EdgeWrapperChild2,
-  TextWrapper2,
+  // EdgeWrapper2,
+  // EdgeWrapperChild2,
+  // TextWrapper2,
 } from "./styles";
 
 export const EdgeByGridCoordinates = ({
@@ -20,11 +20,11 @@ export const EdgeByGridCoordinates = ({
   toRow,
   toCol,
   isVisiting,
+  isVisited,
   color = "red",
   isDirected = false,
   weight,
   styleOption = 0,
-
 }) => {
   const delX = fromCol - toCol;
   const delY = fromRow - toRow;
@@ -36,9 +36,11 @@ export const EdgeByGridCoordinates = ({
     return (
       <Wrapper row={fromRow} col={fromCol}>
         <EdgeWrapper1 length={length} degrees={degrees} color={color}>
-          {!isVisiting && <LoadingWrapper>
-            <Loading />
-          </LoadingWrapper>}
+          {(isVisited || !isVisiting) && (
+            <LoadingWrapper>
+              <Loading />
+            </LoadingWrapper>
+          )}
           <EdgeWrapperChild1 color={color} />
           <TextWrapper1 color={color}>{`${weight ? weight : ""} ${
             isDirected ? ">" : ""
@@ -51,7 +53,7 @@ export const EdgeByGridCoordinates = ({
       <React.Fragment>
         <Wrapper row={fromRow} col={fromCol}>
           <EdgeWrapper degrees={degrees} length={length} color={color}>
-            {!isVisiting && (
+            {(isVisited || !isVisiting) && (
               <LoadingWrapper>
                 <Loading />
               </LoadingWrapper>

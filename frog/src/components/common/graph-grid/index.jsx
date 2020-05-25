@@ -28,14 +28,15 @@ export const GraphGrid = ({
           elementSize={elementSize}
         >
           {graph.adjacencyList.map((val) => {
-            const { id, name, size, color, isVisiting } = val.node;
+            const { id, name, size, color, isVisiting, isVisited } = val.node;
             const { row, col } = getRowColById(id, totalRow, totalCol);
             const Edges = val.edges.map((edge) => {
-              const { toId, weight, styleOption, isVisiting } = edge;
+              const { toId, weight, styleOption, isVisiting, isVisited } = edge;
               const toRow = getRowById(toId, totalRow, totalCol).row;
               const toCol = getColById(toId, totalRow, totalCol).col;
               return (
                 <EdgeByGridCoordinates
+                  key={`E-${id}->${toId}`}
                   gridElementSize={elementSize}
                   isDirected={isDirected}
                   weight={isWeighted ? weight : undefined}
@@ -45,6 +46,7 @@ export const GraphGrid = ({
                   toCol={toCol}
                   styleOption={styleOption}
                   isVisiting={isVisiting}
+                  isVisited={isVisited}
                 />
               );
             });
@@ -56,6 +58,7 @@ export const GraphGrid = ({
                     size={size}
                     color={color}
                     isVisiting={isVisiting}
+                    isVisited={isVisited}
                   />
                 </GridChildWrapper>
                 {Edges}
