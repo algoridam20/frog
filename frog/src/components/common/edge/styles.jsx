@@ -50,7 +50,7 @@ export const TextWrapper = styled.div`
   line-height: 2px;
   font-size: 15px;
   z-index: 3;
-   color: white;
+  color: white;
 `;
 
 export const EdgeWrapper1 = styled.div`
