@@ -1,13 +1,13 @@
 import { generateUndirectedUnweightedGraph } from "../utils/graph-generation-utils";
 
-export const graph1 = generateUndirectedUnweightedGraph(50);
+export const graph2 = generateUndirectedUnweightedGraph(10);
 
-export const graph2 = {
+export const graph1 = {
   properties: {
     title: "tree 1",
     isDirected: false,
     isWeighted: false,
-    isVisited: false,
+    isVisited: true,
     isVisiting: false,
   },
   adjacencyList: [
@@ -165,7 +165,7 @@ export const graph2 = {
   ],
 };
 
-export const graph3 = {
+export const graph4 = {
   properties: {
     isDirected: true,
     isWeighted: true,
@@ -181,7 +181,7 @@ export const graph3 = {
         size: 1,
         color: "red",
         isVisited: 0,
-        isVisiting: false,
+        isVisiting: false, 
       },
       edges: [
         {

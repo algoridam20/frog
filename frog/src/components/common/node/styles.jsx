@@ -14,9 +14,10 @@ export const Circle = styled.div`
   height: ${(props) => getSize(props.size)};
   width: ${(props) => getSize(props.size)};
   border: 3px solid ${(props) => props.color};
-  background-color: red;
   z-index: 99;
-  color: ${(props) => props.color};
+  background-color: ${(props) => {
+    return props.isVisited ? "#07b2de" : props.color;
+  }};
 `;
 
 export const NameWrapper = styled.div`

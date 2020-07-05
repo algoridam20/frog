@@ -36,7 +36,7 @@ export const EdgeByGridCoordinates = ({
     return (
       <Wrapper row={fromRow} col={fromCol}>
         <EdgeWrapper1 length={length} degrees={degrees} color={color}>
-          {(isVisited || !isVisiting) && (
+          {(isVisited || isVisiting) && (
             <LoadingWrapper>
               <Loading />
             </LoadingWrapper>
@@ -53,7 +53,7 @@ export const EdgeByGridCoordinates = ({
       <React.Fragment>
         <Wrapper row={fromRow} col={fromCol}>
           <EdgeWrapper degrees={degrees} length={length} color={color}>
-            {(isVisited || !isVisiting) && (
+            {(isVisited || isVisiting) && (
               <LoadingWrapper>
                 <Loading />
               </LoadingWrapper>

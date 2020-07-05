@@ -6,7 +6,10 @@ import { CardContainer } from "../common/card";
 import { Header } from "../common/header";
 import { GraphGrid } from "../common/graph-grid";
 import { graph1 } from "../../state/sample-graphs";
-import { runGraphAlgoRequest } from "../../state/actions/graph-visualizer-actions";
+import {
+  runGraphAlgoRequest,
+  setGraphRequest,
+} from "../../state/actions/graph-visualizer-actions";
 
 class GraphVisualizer extends React.Component {
   constructor(props) {
@@ -14,12 +17,13 @@ class GraphVisualizer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.runGraphAlgoRequest("dfs");
+    const graph2 = graph1;
+    this.props.setGraph(graph2);
+    this.props.runGraphAlgoRequest({ algo: "dfs" });
   }
 
   render() {
-    const { isRunning, algo, error } = this.props.algorithm;
-    console.log(isRunning, algo, error, ".....");
+    const { graph } = this.props;
     return (
       <React.Fragment>
         <Header />
@@ -31,7 +35,7 @@ class GraphVisualizer extends React.Component {
           </ToolBarWrapper>
           <ContentWrapper>
             <CardContainer title={"Graph"}>
-              <GraphGrid totalRow={8} totalCol={13} graph={graph1} />
+              <GraphGrid totalRow={8} totalCol={13} graph={graph} />
             </CardContainer>
           </ContentWrapper>
         </Wrapper>
@@ -42,11 +46,15 @@ class GraphVisualizer extends React.Component {
 
 const mapStateToProps = (state) => ({
   algorithm: state.algorithm,
+  graph: state.graph,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   runGraphAlgoRequest(algo) {
     dispatch(runGraphAlgoRequest(algo));
+  },
+  setGraph(graph) {
+    dispatch(setGraphRequest(graph));
   },
 });
 

@@ -19,9 +19,9 @@ export const LoadingWrapper = styled.div`
 `;
 
 export const Loading = styled.div`
-  animation: ${fill} 2s linear 1;
+  animation: ${fill} 0.9s linear 1;
   height: 100%;
-  background-color: red;
+  background-color: #07b2de;
 `;
 
 export const Wrapper = styled.div`

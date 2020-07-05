@@ -18,6 +18,9 @@ export const GraphGrid = ({
   elementSize = "90px",
   graph,
 }) => {
+  if (!graph.properties) {
+    return <div />;
+  }
   const { isDirected, isWeighted } = graph.properties;
   return (
     <Wrapper>
