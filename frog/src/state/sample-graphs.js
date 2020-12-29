@@ -1,6 +1,6 @@
 import { generateUndirectedUnweightedGraph } from "../utils/graph-generation-utils";
 
-export const graph2 = generateUndirectedUnweightedGraph(10);
+export const graph2 = generateUndirectedUnweightedGraph(10,0.5);
 
 export const graph1 = {
   properties: {
