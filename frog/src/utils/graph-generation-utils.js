@@ -1,4 +1,4 @@
-export const generateUndirectedUnweightedGraph = (numberOfNodes) => {
+export const generateUndirectedUnweightedGraph = (numberOfNodes, density) => {
   let graph = {
     properties: {
       isDirected: false,
@@ -9,7 +9,7 @@ export const generateUndirectedUnweightedGraph = (numberOfNodes) => {
     },
     adjacencyList: [],
   };
-  graph.adjacencyList = generateNodesWithEdges(numberOfNodes);
+  graph.adjacencyList = generateNodesWithEdges(numberOfNodes, density);
   return graph;
 };
 
@@ -18,9 +18,8 @@ Generates a random graph with N nodes.
 Creates a new node and a new edge in each iteration.
 The edge connects the new node with a random node from previously seen nodes.
 */
-const generateNodesWithEdges = (numberOfNodes) => {
+const generateNodesWithEdges = (numberOfNodes, density) => {
   let adjacencyList = [];
-  let nodeIds = [];
   const listOfIds = getListOfIds(numberOfNodes);
   const listOfNames = getListOfNodeNames(numberOfNodes);
   let i;
@@ -36,16 +35,23 @@ const generateNodesWithEdges = (numberOfNodes) => {
       },
       edges: [],
     };
-    node.edges.push(createEdge(nodeIds));
-    nodeIds.push(listOfIds[i - 1]);
+    
+    let j;
+    for(j= 1; j <= numberOfNodes; j++) {
+      let probabilityOfEdge = Math.random();
+      if(i == j || probabilityOfEdge < density) // No self loops or the probabilty of edge 
+        continue;                               // between i - 1 and j - 1 is less than density
+      
+      node.edges.push(createEdge(listOfIds[j - 1]));
+    }
     adjacencyList.push(node);
   }
   return adjacencyList;
 };
 
-const createEdge = (nodeIds) => {
+const createEdge = (toNode) => {
   const edge = {
-    toId: nodeIds[Math.floor(Math.random() * nodeIds.length)],
+    toId: toNode,
     weight: "0",
     isVisited: false,
     isVisiting: false,
